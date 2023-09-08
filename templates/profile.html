@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <!-- Include necessary CSS and JavaScript libraries for the chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+</head>
+<body>
+
+  <div class="logo-button">
+    <img src="{% static 'images/logo.png' %}" alt="Path Maker Logo" class="logo">
+    <button class="logo-text">Path Maker</button>
+    <span style="margin-left:350px;"> <h1>User Profile</h1> </span>
+    <a href="/users"> Back</a>
+
+  </div>
+
+
+ <h1 style="margin-left:20px;text-transform: capitalize; " >Welcome, {{ user.username }}!</h1> 
+
+ <div class="container">
+    <div class="path-details">
+        <h2>Course Title:</h2>
+        <h2 style="text-transform: capitalize; color: #092ea7;">
+            {% for course_title in course_titles %}
+                {{ course_title }}
+            {% endfor %}
+        </h2>
+        <h2>Recommended Path:</h2>
+        <p>{{ recommended_path|safe}}</p>
+    </div>
+</div>
+  
+  
+</body>
+</html>

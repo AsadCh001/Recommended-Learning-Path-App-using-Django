@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Users Page</title>
+
+    <link rel="stylesheet" href="{% static 'css/user.css' %}">
+</head>
+<body>
+    <header>
+      <div class="logo-button" id = "index">
+        <img src="{% static 'images/logo.png' %}" alt="Path Maker Logo" class="logo">
+        <button class="logo-text">Path Maker</button>
+        <span style="margin-left:350px;"> <h1>Dashboard</h1> </span>
+    </div>
+        
+        
+
+      <div  style="margin-left:1050px; margin-top:-35px; ">
+        <a href="/pages" class="fcc-btn ">Saved Paths</a> 
+        <a href="/logout" class="fcc-btn ">Logout</a> 
+        
+      </div>
+    </header><br>
+    <div class="container">
+        <h1>Welcome, {{ user.username }}!</h1>
+        
+        
+        <h2>Currently Generated Path:</h2>
+        <div>
+          
+           {{ recommended_learning_paths|safe }}
+          
+        </div>
+        <div  style=" margin-top: 40px;">
+         <a href="/save" class="fcc-btn">Save</a>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+</html>
+
+
+<script>
+  document.getElementById("index").addEventListener("click", function() 
+  {
+      window.location.href = "/";
+  });
+
+const accessToken = "{{ access_token }}";
+
+fetch('profile', {
+  method: 'GET',
+  headers: {
+    'Authorization': `Bearer ${accessToken}`
+  }
+})
+.then(response => response.json())
+.then(data => {
+  window.location.href = "/profile"
+})
+.catch(error => console.error('Error:', error));
+  // Handle error
+
+</script>

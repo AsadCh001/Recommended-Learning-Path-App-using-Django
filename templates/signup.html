@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+   
+</head>
+
+
+
+<body>
+
+<!-- Navbar -->
+
+    <nav>
+        <div class="navbar-content">
+            <div class="logo-button">
+                <img src="{% static 'images/logo.png' %}" alt="Path Maker Logo" class="logo">
+                <button class="logo-text">Path Maker</button>
+            </div>
+            <div class="right-buttons">
+                <button class="login-button" id="login">Log in</button>
+                <button class="login-button" id="home">Back</button>
+
+
+            </div>
+        </div>
+    </nav>
+
+<!--Signup Form -->
+        <div class="login" style="margin-left:5px; margin-top:-95px;">
+            <form class="logform" id="signup-form" action="/create" method="post">
+                {% csrf_token %}
+                <h2 class="h21">Sign Up</h2>
+                <div id="error-message" style="color: red;"> </div>
+                {% if error %}
+                <p style="color:red;">{{ error }}</p>
+                {% endif %}
+                
+                <label class="loginlabel" for="username">Username:</label>
+                <input class="logininput" type="text" id="username" name="username" placeholder="Enter your username">
+
+                <label class="loginlabel" for="email">Email:</label>
+                <input class="logininput" type="email" id="email" name="email" placeholder="Enter your Email">
+
+                <label class="loginlabel" for="password">Password:</label>
+                <input class="logininput" type="password" id="password" name="password" placeholder="Enter your password">
+
+                <label class="loginlabel" for="password2">Confirm Password:</label>
+                <input class="logininput" type="password" id="password2" name="password2" placeholder="Enter your password again">
+
+                <br>
+                <button class="logbutton" type="submit">Sign Up</button>
+            </form>
+        </div>
+
+    
+    <script>
+
+        document.getElementById("login").addEventListener("click", function() 
+        {
+            window.location.href = "/login";
+        });
+
+        document.getElementById("home").addEventListener("click", function() 
+        {
+            window.location.href = "/";
+        });
+
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            fetch('/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if ('message' in result) {
+                    document.getElementById('error-message').textContent = result.message;
+                    if ('redirect_url' in result) {
+                        
+                            window.location.href = result.redirect_url;
+                    }
+
+                }
+                 else {
+                    document.getElementById('error-message').textContent = '';
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+
+    </script>
+</body>
+</html>

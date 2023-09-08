@@ -1,0 +1,168 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: skyblue;
+}
+
+nav {
+    background-color: skyblue;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.logo-button {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-left: 5px;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    
+}
+
+.right-buttons {
+    display: flex;
+    align-items: center;
+    margin-top: -20px; 
+    margin-left: 950px;
+}
+
+.signup-button,
+.login-button {
+    font-size: 1rem;
+    padding: 8px 16px;
+    font-weight: bold;
+    margin-left: 5px; /* Adjust the left margin to separate the buttons from each other */
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    background-color: #092ea7;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    
+}
+
+
+.signup-button:hover,
+.login-button:hover {
+    background-color: #a8b5e0;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+.searchbar {
+    size-adjust: 20px;
+    margin-top: 60px;
+    margin-left: 60px;
+    height: 30px;
+    width: 400px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+.search_input {
+    color: white;
+    margin-left: 15px;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 350px;
+    caret-color: red;
+    line-height: 10px;
+    margin-top: 6.5px;
+    
+}
+
+.search_icon {
+    height: 30px;
+    width: 30px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+}
+
+.search_icon i {
+    color: #e74c3c;
+    font-family: 'Font Awesome 5 Free'; 
+    content: "\f002"; 
+}
+
+
+
+
+
+
+.container1 {
+    background-color: #1a1a1a; /* Dark blue background color */
+    color: white; /* Font color white */
+    padding: 20px;
+    width: 210px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.formlabel {
+    font-weight: bold; /* Bold text */
+    margin-bottom: 5px;
+}
+
+.formselect, .formbutton {
+    width: 200px;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.formbutton {
+    background-color: #092ea7;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+}
+
+.formbutton:hover {
+    background-color: #a8b5e0;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
+

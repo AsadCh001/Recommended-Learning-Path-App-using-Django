@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+   
+</head>
+
+
+
+<body>
+
+<!-- Navbar -->
+
+    <nav>
+        <div class="navbar-content">
+            <div class="logo-button">
+                <img src="{% static 'images/logo.png' %}" alt="Path Maker Logo" class="logo">
+                <button class="logo-text">Path Maker</button>
+            </div>
+            <div class="right-buttons">
+                <button class="signup-button" id="signup">Sign Up</button>
+                <button class="signup-button" id="home">Back</button>
+
+
+            </div>
+        </div>
+    </nav>
+
+<!-- Login Form -->
+        <div class="login" style="margin-left:5px; margin-top:-95px;">
+            <form class="logform" action="/login" method="post">
+                {% csrf_token %}
+                <h2 class="h21">Login</h2>
+                {% if messages %}
+                    {% for message in messages %}
+                       <p style="color:red;">{{ message }} </p> 
+                    {% endfor %}
+            {% endif %}
+                <label class="loginlabel" for="username">Username:</label>
+                <input class="logininput" type="text" id="username" name="username" placeholder="Enter your username">
+
+                <label class="loginlabel" for="password">Password:</label>
+                <input class="logininput" type="password" id="password" name="password" placeholder="Enter your password">
+                <br>
+                <button class="logbutton" type="submit">Log In</button>
+            </form>
+        </div>
+
+    
+    <script>
+
+        document.getElementById("signup").addEventListener("click", function() 
+        {
+            window.location.href = "/signup";
+        });
+
+        document.getElementById("home").addEventListener("click", function() 
+        {
+            window.location.href = "/";
+        });
+        const urlParams = new URLSearchParams(window.location.search);
+        const accessToken = urlParams.get('access_token');
+    
+        const jwtToken = accessToken;
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+
+body {
+    background-color: skyblue;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: skyblue;
+    text-align: left;
+    padding: 10px;
+    
+
+}
+header a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.container {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px;
+
+}
+.container h2 {
+    margin-bottom: 10px;
+}
+.fcc-btn {
+  background-color: #092ea7;
+  color: white;
+  padding: 15px 25px;
+  text-decoration: none;
+  margin-top: 25px;
+  transition: background-color 0.3s, box-shadow 0.8s;
+}
+.fcc-btn:hover {
+    background-color: #a8b5e0;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.logo {
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
+}
+.logo-button {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-left: 5px;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    
+}
+
+.card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.card-description {
+    font-size: 14px;
+    color: #555;
+}

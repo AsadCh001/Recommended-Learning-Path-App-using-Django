@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Pages </title>
+    <link rel="stylesheet" href="{% static 'css/pages.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo-button" id="index">
+          <img src="{% static 'images/logo.png' %}" alt="Path Maker Logo" class="logo">
+          <button class="logo-text">Path Maker</button>
+          <span style="margin-left:350px;"> <h1>Saved Paths</h1> </span>
+      </div>
+
+      <div class="right-buttons">
+
+        <button class="login-button" id="back">Back</button>
+    </div>
+          
+
+      </header>
+    <div class="container">
+        <h2>All Learning Paths:</h2>
+        {% for path in paths %}
+        <div class="card">
+          <div class="card-title">
+            {% for course_title in path.course_titles %}
+                  {{ course_title }}
+            {% endfor %}
+        </div>
+            <div class="card-description">
+                {{ path.recommended_path|truncatewords:20 }}<a href="{% url 'profile' path_id=path.index %}">See More</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <script>       
+         document.getElementById("back").addEventListener("click", function() 
+        {
+            window.location.href = "/users";
+        });
+        document.getElementById("index").addEventListener("click", function() 
+        {
+            window.location.href = "/";
+        });
+    </script>
+    
+</body>
+</html>

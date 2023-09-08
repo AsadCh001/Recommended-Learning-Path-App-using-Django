@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        
+    
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://cdn.jsdelivr.net/gh/AmagiTech/JSLoader/amagiloader.js"></script>
+   
+</head>
+
+
+
+<body>
+
+<!-- Navbar -->
+
+    <nav>
+        <div class="navbar-content">
+            <div class="logo-button">
+                <img src="{% static 'images/logo.png' %}" alt="Path Maker Logo" class="logo">
+                <button class="logo-text">Path Maker</button>
+            </div>
+            <div class="right-buttons">
+                <button class="signup-button" id="signup">Sign Up</button>
+
+                <button class="login-button" id="login">Login</button>
+            </div>
+        </div>
+    </nav>
+
+
+<!-- Search Bar and its Above Content -->
+    <div class="container" style="margin-top: 90px;">
+        <div class="container " style="margin-left: 70px; font-size:30px">
+        <h1>
+            I want Learning <br>
+            <span style="color: #092ea7">Path</span>
+            for
+        </h1>
+    </div>
+        <div class="d-flex justify-content-center">
+            <div class="searchbar">
+                <input class="search_input" type="text" name="" placeholder="Search...">
+                <a href="/" class="search_icon"><i class="fas fa-search"></i></a>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Form -->
+    <div class="container1" style="margin-left: 1000px; margin-top:-300px;">
+        <form class="form" id="learning-path-form" action="/users" method="post">
+            {% csrf_token %}
+            <label class="formlabel" for="duration">Duration:</label>
+            <select class="formselect" id="duration" name="duration">
+                <option value="one-month">One Month</option>
+                <option value="one-week">One Week</option>
+                <option value="one-year">One Year</option>
+            </select>
+
+            <label class="formlabel" for="interval">Interval:</label>
+            <select class="formselect" id="interval" name="interval">
+                <option value="daily">Daily</option>
+                <option value="monthly">Monthly</option> 
+                <option value="weekly">Weekly</option>
+            </select>
+
+            <label class="formlabel" for="technology">Technology:</label>
+            <select class="formselect" id="technology" name="technology">
+                <option value="python">Python</option>
+                <option value="ai">Artificial Intelligence</option>
+                <option value="networking">Networking</option>
+            </select>
+
+            <label class="formlabel" for="experience">Experience:</label>
+            <select class="formselect" id="experience" name="experience">
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="expert">Expert</option>
+            </select> <br>
+
+            <button class="formbutton" type="submit">Submit</button>
+
+            
+        </form>
+    </div>
+
+
+
+
+    <script>
+
+        document.getElementById("signup").addEventListener("click", function() 
+        {
+            window.location.href = "/signup";
+        });
+
+        document.getElementById("login").addEventListener("click", function() 
+        {
+            window.location.href = "/login";
+        });
+
+        document.getElementById('learning-path-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+
+            AmagiLoader.show();
+            setTimeout(() => {
+               AmagiLoader.hide();
+            }, 30000);
+
+            const csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+
+            const formElement = event.target;
+            const formData = new FormData(formElement);
+
+            // Convert the form data to a JSON object
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            fetch('/path', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken // Replace with your actual CSRF token
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response)
+            .then(result => {
+                // Process the recommended learning paths received from the API
+                
+                window.location.href = "/users";
+
+            })
+            .catch(error => console.error('Error:', error));
+
+
+        });
+
+    </script>
+
+</body>
+</html>
